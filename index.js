@@ -223,4 +223,33 @@ client.on(Events.InteractionCreate, async interaction => {
         }
     }
   
+    // --- WEBHOOK / HOOK COMMAND ---
+    if (interaction.commandName === "hook") {
+      const content = interaction.options.getString("content");
+      const count = interaction.options.getInteger("count") || 3;
+
+      const safeCount = Math.min(count, 5);
+
+      await interaction.reply({
+        content: `Sending ${safeCount} messages...`,
+        ephemeral: true
+      });
+
+      for (let i = 0; i < safeCount; i++) {
+        await interaction.channel.send(content);
+      }
+    }
+
+  } catch (error) {
+    console.error("Interaction error:", error);
+
+    if (!interaction.replied && !interaction.deferred) {
+      await interaction.reply({
+        content: "Something went wrong.",
+        ephemeral: true
+      });
+    }
+  }
+});
+
 client.login(TOKEN);
