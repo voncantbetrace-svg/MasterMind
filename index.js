@@ -1,6 +1,11 @@
 // Load environment variables from a .env file for secure credential management.
+// Load environment variables
 require('dotenv').config();
 
+// Retrieve sensitive information from environment variables.
+const { TOKEN, CLIENT_ID, GUILD_ID } = process.env;
+
+// Debug log
 console.log("TOKEN:", TOKEN ? "✅ exists" : "❌ missing");
 console.log("CLIENT_ID:", CLIENT_ID ? "✅ exists" : "❌ missing");
 console.log("GUILD_ID:", GUILD_ID ? "✅ exists" : "❌ missing");
@@ -9,9 +14,6 @@ console.log("GUILD_ID:", GUILD_ID ? "✅ exists" : "❌ missing");
 const { Client, GatewayIntentBits, Events, Partials, REST, Routes, SlashCommandBuilder } = require('discord.js');
 
 // --- Configuration and Initialization ---
-
-// Retrieve sensitive information from environment variables.
-const { TOKEN, CLIENT_ID, GUILD_ID } = process.env;
 
 // Error handling for missing critical environment variables.
 if (!TOKEN) {
