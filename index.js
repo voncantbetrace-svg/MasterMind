@@ -109,10 +109,10 @@ client.once(Events.ClientReady, function() {
 
   // Dynamic status messages to keep the bot engaging.
   const statuses = [
-    { name: "Master mind Taking Over", type: 0 }, // PLAYING
+    { name: "BitchEm Taking Over", type: 0 }, // PLAYING
     { name: "Textin Yo Ho", type: 2 },          // LISTENING
     { name: "You a bitch nigga", type: 3 },     // WATCHING
-    { name: "Come Die", type: 5 },              // COMPETING (This type is rarely used and might not display as expected)
+    { name: "Come Get Bitch", type: 5 },              // COMPETING (This type is rarely used and might not display as expected)
   ];
 
   let i = 0;
@@ -129,6 +129,7 @@ client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
   try {
+    
     // --- PANEL COMMAND ---
     // Assuming 'sendServerPanel' is correctly exported and handles slash command interactions.
     if (interaction.commandName === "panel") {
