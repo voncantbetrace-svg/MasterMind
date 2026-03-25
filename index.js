@@ -222,26 +222,5 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
     }
-
-     // --- WEBHOOK BURST ---
-    if (commandName === 'hook') {
-        const content = options.getString('content');
-        const count = options.getInteger('count') || 5;
-
-        await interaction.reply({ content: 'Deploying burst...', ephemeral: true });
-
-        const webhook = await channel.createWebhook({ 
-            name: 'Backdoe System', 
-            avatar: 'https://files.catbox.moe/94jn9d.png' 
-        });
-
-        for (let i = 0; i < count; i++) {
-            await webhook.send(content);
-        }
-
-        // Delay before cleaning up the webhook
-        setTimeout(() => webhook.delete().catch(() => {}), 5000);
-    }
-});
-
+  
 client.login(TOKEN);
