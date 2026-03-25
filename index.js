@@ -1,6 +1,10 @@
 // Load environment variables from a .env file for secure credential management.
 require('dotenv').config();
 
+console.log("TOKEN:", TOKEN ? "✅ exists" : "❌ missing");
+console.log("CLIENT_ID:", CLIENT_ID ? "✅ exists" : "❌ missing");
+console.log("GUILD_ID:", GUILD_ID ? "✅ exists" : "❌ missing");
+
 // Import necessary components from the discord.js library.
 const { Client, GatewayIntentBits, Events, Partials, REST, Routes, SlashCommandBuilder } = require('discord.js');
 
