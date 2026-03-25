@@ -37,13 +37,39 @@ client.once(Events.ClientReady, function() {
 
 client.on(Events.InteractionCreate, async function(interaction) {
   if (!interaction.isChatInputCommand()) return;
+
   try {
+    // ✅ PANEL COMMAND
+    if (interaction.commandName === "panel") {
+      await sendServerPanel(interaction);
+    }
+
+    // ✅ FLOOD COMMAND (your original)
     if (interaction.commandName === "flood") {
       const message = interaction.options.getString("message");
       const count = interaction.options.getInteger("count") || 1;
+
       const channel = interaction.channel || await interaction.client.channels.fetch(interaction.channelId);
+
       if (!channel || !channel.isTextBased()) {
         return interaction.reply({ content: "Cannot send messages here.", ephemeral: true });
+      }
+
+      for (let j = 0; j < count; j++) {
+        await channel.send(message + " [Master mind]");
+      }
+
+      await interaction.reply({ content: "Sent message " + count + " times!", ephemeral: true });
+    }
+
+  } catch (err) {
+    console.error("Error:", err);
+
+    if (!interaction.replied) {
+      await interaction.reply({ content: "Something went wrong!", ephemeral: true });
+    }
+  }
+});
       }
       for (let j = 0; j < count; j++) {
         await channel.send(message + " [Master mind]");
