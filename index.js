@@ -1,6 +1,8 @@
 require("dotenv").config();
 const { Client, GatewayIntentBits, Events, Partials } = require("discord.js");
 
+const { sendServerPanel } = require("./commands/panel");
+
 const TOKEN = process.env.TOKEN;
 
 if (!TOKEN) {
