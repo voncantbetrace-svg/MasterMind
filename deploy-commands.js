@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const { Client, GatewayIntentBits, SlashCommandBuilder, Routes, REST, EmbedBuilder, Events } = require('discord.js');
 
 // --- ENVIRONMENT VARIABLES ---
