@@ -1,6 +1,5 @@
 // Load environment variables from a .env file for secure credential management.
 // Load environment variables
-require('dotenv').config();
 
 // Retrieve sensitive information from environment variables.
 const { TOKEN, CLIENT_ID, GUILD_ID } = process.env;
